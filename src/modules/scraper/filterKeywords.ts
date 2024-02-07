@@ -16,7 +16,14 @@ export async function filterKeyword(jobs: TJob[]): Promise<TJob[]> {
       await jobDescriptionClicker(driver);
       await driver.sleep(3000);
       const element = await driver.findElement(By.className('core-section-container'));
+      const text = ""
+
+      if(element) {
       const text = await element.getText();
+      } else {
+        console.log("Element not found")
+      }
+        
       await driver.sleep(3000);
       const companyName = text.toLocaleLowerCase();
       const haveVisa =

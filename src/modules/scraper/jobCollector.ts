@@ -1,7 +1,6 @@
 import {By, until} from 'selenium-webdriver';
 import {createDriver} from '../driver';
 import {elementGetter} from './elements';
-import {isExcludedByTitle} from './isExcludedByTitle';
 import {TJob} from '../../types';
 
 export async function jobCollector(locations: string[], keyword: string) {
@@ -43,7 +42,8 @@ export async function jobCollector(locations: string[], keyword: string) {
         const location = await elementGetter({el, selector: 'span.job-search-card__location'});
         const time = await elementGetter({el, selector: 'time'});
         const link = await elementGetter({el, selector: 'a.base-card__full-link', method: 'attribute', attr: 'href'});
-        if (isExcludedByTitle(title.toLocaleLowerCase()) && link.length > 1) {
+
+        // if (isExcludedByTitle(title.toLocaleLowerCase()) && link.length > 1) {
           jobs.push({
             title: title.toLocaleLowerCase(),
             company,
@@ -54,12 +54,13 @@ export async function jobCollector(locations: string[], keyword: string) {
             description: '',
             source: 'Linkedin',
           });
-        } else {
-          console.log('filtered by title:', title);
-        }
+        // } else {
+        //   console.log('filtered by title:', title);
+        // }
       }
     }
     return jobs;
+
   } catch (err) {
     console.log(err);
   } finally {

@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'job-scraper',
       script: 'npm',
-      args: 'start -- --locations="Netherlands" "Sweden" "Finland" "france" "United kingdom" "Denmark" --keyword=\'"frontend" OR "front-end" OR "React"\'',
+      args: 'start -- --locations="brazil" --keyword=\'"Dev"\'',
       cron_restart: '0 0 * * *',
       log_date_format: 'YYYY-MM-DD HH:mm Z',
       error_file: 'logs/error.log',

@@ -3,14 +3,6 @@ const http = require('http');
 import {scraper} from './modules/scraper';
 import {collectCompanies} from './modules/companies';
 import {cli} from './modules/cli';
-import {gatheringCompanies, generateCoverLetter, getJD, getUserInformation, startScarpData, updateInformation} from './modules/telegram';
-
-generateCoverLetter();
-getUserInformation();
-startScarpData();
-updateInformation();
-gatheringCompanies();
-getJD()
 
 export async function runScripts(locations?: string[], keyword?: string, description?: boolean) {
   if (locations && keyword) {
@@ -26,12 +18,13 @@ export async function runScripts(locations?: string[], keyword?: string, descrip
   }
 }
 
-const server = http.createServer((req: any, res: any) => {
+const server = http.createServer( async (req: any, res: any) => {
   if (req.method === 'GET' && req.url === '/start') {
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify({message: 'Script ran'}));
+
     res.end();
-    void runScripts(['Amsterdam'], 'react', false);
+    void runScripts(['Brasil'], 'react', false);
   } else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
     res.write('404 Not Found\n');

@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DB_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Job {
@@ -14,7 +14,7 @@ model Job {
   location     String?
   time         String?
   link         String
-  job_name     String    @unique
+  job_name     String    
   created_date DateTime? @default(now())
   visa         Boolean?  @default(false)
   description  String?

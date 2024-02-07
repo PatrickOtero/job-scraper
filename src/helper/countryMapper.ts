@@ -2,6 +2,7 @@ import {capitalizedString} from './delay';
 
 export function companyLogoMapper(location: string) {
   const countryLogo = {
+    brazil: "BR",
     netherlands: '🇳🇱',
     'united kingdom': '🇬🇧',
     finland: '🇫🇮',
